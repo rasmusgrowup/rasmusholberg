@@ -1,0 +1,326 @@
+@import "sizes.scss";
+
+.container {
+  padding: 4vw;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.header {
+  align-items: flex-start;
+  display: flex;
+  height: 15.25vw;
+  justify-content: space-between;
+  margin-top: 4vw;
+  text-transform: uppercase;
+  width: 100%;
+
+  @media (max-width: $m) {
+    margin-top: 3rem;
+  }
+
+  .firstName {
+    font-size: 20.5vw;
+    height: 15.25vw;
+    line-height: 15vw;
+    overflow: hidden;
+    padding-right: 1vw;
+    position: relative;
+
+    @media (max-width: $m) {
+      font-size: 19vw;
+    }
+
+    span {
+      display: inline-block;
+      letter-spacing: -0.05em;
+      position: relative;
+    }
+
+    span:first-of-type {
+      text-indent: -1.4vw;
+    }
+  }
+
+  .socialsAndLastName {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    text-align: right;
+
+    .lastNames {
+      align-self: flex-end;
+      line-height: 1;
+      font-size: 2.5vw;
+
+      @media (max-width: $m) {
+        font-size: 3.8vw;
+      }
+
+      div {
+        overflow: hidden;
+        position: relative;
+
+        span {
+          display: block;
+          position: relative;
+        }
+      }
+    }
+  }
+}
+
+.title {
+  line-height: 0.8;
+  margin-top: -10vw;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+
+  @media (max-width: $m) {
+    margin-top: -5rem;
+  }
+
+  span {
+    display: block;
+    text-transform: uppercase;
+    font-size: 15vw;
+    font-weight: normal;
+    letter-spacing: -0.025em;
+    position: relative;
+  }
+
+  span[data="Upcoming"]:after {
+    background-color: lighten(#000, 10);
+    border-radius: 1vw;
+    color: var(--orange);
+    content: attr(data);
+    font-size: 1vw;
+    letter-spacing: normal;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+    padding: 0.75rem 1rem;
+    position: absolute;
+    top: 0;
+  }
+}
+
+.textBit {
+  font-size: 1.5vw;
+  //font-family: 'Source Serif 4', serif;
+  //font-style: italic;
+  font-weight: normal;
+  letter-spacing: 0.033em;
+  //line-height: 1.5;
+  margin-bottom: 10vw;
+  margin-top: 17.5vw;
+  margin-inline: auto;
+  text-transform: uppercase;
+  width: 40vw;
+
+  @media (max-width: $m) {
+    font-size: 3.6vw;
+    margin-top: 6rem;
+    width: 100%;
+  }
+
+  .animateIn p {
+    margin: 0;
+  }
+
+  .animateIn div:first-of-type {
+    text-indent: 3rem;
+
+    @media (max-width: $m) {
+      text-indent: 2rem;
+    }
+  }
+
+  .animateIn:last-of-type {
+    margin-top: 1rem;
+  }
+}
+
+.animateIn div {
+  overflow: hidden;
+  position: relative;
+
+  span, a {
+    display: block;
+    position: relative;
+    //animation-name: transformIn;
+    //animation-duration: 1s;
+    //position: relative;
+  }
+}
+
+.image {
+  border-radius: 1vw;
+  height: 62vw;
+  margin-top: 6vw;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  z-index: 0;
+
+  @media (max-width: $m) {
+    border-radius: 1rem;
+    height: 90vw;
+    margin-top: 3rem;
+  }
+
+  .imgFramer {
+    height: 65vw;
+    width: 100%;
+
+    @media (max-width: $m) {
+      height: 105vw;
+    }
+
+    .img {
+      object-fit: cover;
+      object-position: center;
+      height: 100%;
+      pointer-events: none;
+      width: 100%;
+    }
+  }
+}
+
+.clients,
+.frameworks,
+.languages {
+  margin-top: 10vw;
+  max-width: 500px;
+  width: 100%;
+
+  @media (max-width: $m) {
+    margin-top: 10rem;
+    max-width: none;
+  }
+
+  .subject {
+    font-size: 1.5vw;
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    text-transform: capitalize;
+
+    @media (max-width: $m) {
+      font-size: 1.25rem;
+    }
+  }
+
+  .item {
+    border-top: 1px solid var(--half);
+    font-size: 4vw;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+
+    @media (max-width: $m) {
+      font-size: 2.5rem;
+    }
+  }
+
+  .item a[data]::after {
+    content: attr(data);
+    font-size: 1rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+  }
+}
+
+@media (min-width: $m) {
+  .frameworks {
+    margin-top: -60vw;
+  }
+}
+
+.frameworks {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.clients {
+  margin-bottom: 10vw;
+  margin-top: 10vw;
+  margin-inline: auto;
+  margin-left: auto;
+  margin-right: 0;
+
+  @media (max-width: $m) {
+    margin-bottom: 5rem;
+    margin-top: 10rem;
+  }
+}
+
+.footer {
+  padding-bottom: 1rem;
+}
+
+.year {
+  display: block;
+  font-size: 45vw;
+  letter-spacing: -2.5vw;
+  line-height: 0.9;
+  height: 0.9em;
+  margin-top: 5vw;
+  overflow: hidden;
+  text-indent: -0.6vw;
+  position: relative;
+
+  @media (max-width: $m) {
+    margin-top: 5rem;
+  }
+
+  span {
+    display: inline-block;
+    position: relative;
+  }
+}
+
+.bottom {
+  display: flex;
+
+  .left,
+  .right {
+    display: flex;
+    width: 50%;
+  }
+
+  .left .animateIn:first-child {
+    margin-right: 3vw;
+  }
+
+  .right {
+    justify-content: flex-end;
+  }
+
+  .right .animateIn:last-child {
+    margin-left: 3vw;
+    margin-right: 1vw;
+    text-align: right;
+  }
+
+  @media (max-width: $m) {
+    .left {
+      display: none;
+    }
+    .right {
+      justify-content: space-between;
+      width: 100%;
+
+      .animateIn:last-child {
+        margin-left: 0;
+      }
+    }
+  }
+}

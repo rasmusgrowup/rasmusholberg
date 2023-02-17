@@ -1,9 +1,29 @@
 html,
 body {
-  padding: 0;
+  background-color: var(--black);
+  color: var(--white);
+  font-family:
+          neue-haas-grotesk-display,
+          -apple-system,
+          BlinkMacSystemFont,
+          Segoe UI,
+          Roboto,
+          Oxygen,
+          Ubuntu,
+          Cantarell,
+          Fira Sans,
+          Droid Sans,
+          Helvetica Neue,
+          sans-serif;
+  font-size: 14px;
+  font-weight: 500;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  overscroll-behavior-y: none;
+  padding: 0;
+  position: relative;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -11,16 +31,44 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+    color: var(--orange);
+}
+
 * {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+span.source {
+    color: var(--orange);
+    display: inline-block !important;
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: 50% !important;
+    margin-left: 2.2vw;
+    text-transform: lowercase !important;
+}
+
+strong.source {
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-weight: inherit;
+    margin-inline: 0.05em;
+    text-transform: initial;
+    /*opacity: 0.6;*/
+}
+
+a.inlineLink { display: inline !important; }
+
+a.underlinedLink { text-decoration: underline }
+
+:root {
+    --black: #000;
+    --half: #575757;
+    --light: #eee;
+    --white: #fff;
+    --orange: #FF9300;
+    --peach: #FF6666;
+    --skin: #fdab5c;
+    --red: #ec2626;
 }
