@@ -79,10 +79,10 @@ function FirstBit() {
 
     return (
         <motion.div viewport={{ once: true }} whileInView='visible' variants={variants} initial='hidden'  className={styles.textBit}>
-            { text.map((object, i) => (
-                <div key={i} className={styles.animateIn}>
-                    { object.map((t, i) => (
-                        <div key={i}><motion.span variants={items}>{t}</motion.span></div>
+            { text.map((object, index) => (
+                <div key={index} className={styles.animateIn}>
+                    { object.map((t, index) => (
+                        <div key={index}><motion.span variants={items}>{t}</motion.span></div>
                     )) }
                 </div>
             ))
