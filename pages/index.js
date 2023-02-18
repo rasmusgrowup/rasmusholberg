@@ -6,12 +6,17 @@ import RASMUS from "/public/rasmus_alt_bw.jpg"
 import { motion, useScroll, useTransform, motionValue } from "framer-motion"
 import {useState, useRef, useEffect} from "react";
 
-// Ract Device Detect
+// React Device Detect
 import { isMobile } from 'react-device-detect';
 
 // TextBits
 import text from "../lib/text";
 import Head from 'next/head'
+
+// Custom Cursor
+import { useContext } from "react";
+import { MouseContext } from '../lib/MouseContext.js'
+import Cursor from "../components/Cursor";
 
 function Title() {
     const fadeIn = {
@@ -219,6 +224,7 @@ function Clients() {
         offset: ["start end", "end start"]
     });
     const y2 = useTransform(scrollYProgress, [0, 1], [0, 500]);
+    const { cursorType, cursorChangeHandler } = useContext(MouseContext);
 
     const variants = {
         hidden: {
@@ -256,19 +262,19 @@ function Clients() {
             className={styles.clients}>
             <motion.div className={styles.animateIn}>
                 <div className={styles.subject}><motion.span variants={items}>Udvalgte Projekter</motion.span></div>
-                <div className={styles.item} >
+                <div className={styles.item} onMouseEnter={() => cursorChangeHandler("dabea")} onMouseLeave={() => cursorChangeHandler("")}>
                     <motion.a data="Frontend" target="_blank" href="https://dabea.dk" variants={items}>Dabea</motion.a>
                 </div>
-                <div className={styles.item} >
+                <div className={styles.item} onMouseEnter={() => cursorChangeHandler("dogme")} onMouseLeave={() => cursorChangeHandler("")}>
                     <motion.a data="Hygraph + Nextjs" target="_blank" href="https://digitaldogme.dk" variants={items}>Digital Dogme</motion.a>
                 </div>
-                <div className={styles.item} >
+                <div className={styles.item} onMouseEnter={() => cursorChangeHandler("organic")} onMouseLeave={() => cursorChangeHandler("")}>
                     <motion.a data="Custom Shopify" target="_blank" href="https://theorganiccrave.com" variants={items}>Organic Crave</motion.a>
                 </div>
-                <div className={styles.item} >
+                <div className={styles.item} onMouseEnter={() => cursorChangeHandler("tinekhome")} onMouseLeave={() => cursorChangeHandler("")}>
                     <motion.a data="Frontend" target="_blank" href="https://www.tinekhome.com/en/" variants={items}>Tinekhome</motion.a>
                 </div>
-                <div className={styles.item} >
+                <div className={styles.item} onMouseEnter={() => cursorChangeHandler("twelveinch")} onMouseLeave={() => cursorChangeHandler("")}>
                     <motion.a data="Custom Shopify" target="_blank" href="https://twelve-inch.com" variants={items}>Twelve Inch</motion.a>
                 </div>
             </motion.div>
@@ -282,6 +288,7 @@ export default function Home() {
     const y1 = useTransform(scrollY, [0, 1500], [-40, 100]);
     let getDate = new Date().getFullYear();
     const [date, setDate] = useState(getDate.toString().split(''));
+    const { cursorType, cursorChangeHandler } = useContext(MouseContext);
 
     const variants = {
         hidden: {
@@ -334,7 +341,8 @@ export default function Home() {
                 <meta name="og:title" content="Webudvikler fra Odense | React, NextJS og Shopify" key='title'/>
                 <title>Webudvikler fra Odense | React, NextJS og Shopify</title>
             </Head>
-            <div className={styles.container}>
+            <Cursor/>
+            <div className={styles.container} onMouseEnter={() => cursorChangeHandler("")} onMouseLeave={() => cursorChangeHandler("leave")}>
                 <motion.div animate='visible' variants={variants} initial='hidden' className={styles.top}>
                     <div className={styles.animateIn}>
                         <div><motion.a variants={items} href="/">Instagram</motion.a></div>
@@ -364,7 +372,7 @@ export default function Home() {
                         </motion.div>
                     </div>
                 </motion.header>
-                <motion.div variants={fadeIn} initial='hidden' animate='visible' className={styles.image}>
+                <motion.div variants={fadeIn} initial='hidden' animate='visible' className={styles.image} onMouseEnter={() => cursorChangeHandler("hello")} onMouseLeave={() => cursorChangeHandler("")}>
                     <motion.div className={styles.imgFramer} style={{ y: y1 }}><Image className={styles.img} src={RASMUS} quality='100'/></motion.div>
                 </motion.div>
                 <Title />
