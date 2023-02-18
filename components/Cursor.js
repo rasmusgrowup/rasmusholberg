@@ -69,7 +69,9 @@ export default function Cursor() {
       width: 500,
     },
     leave: {
+      height: 0,
       opacity: 0,
+      width: 0
     }
   };
 
