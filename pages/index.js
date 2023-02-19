@@ -345,11 +345,11 @@ export default function Home() {
             <div className={styles.container} onMouseEnter={() => cursorChangeHandler("")} onMouseLeave={() => cursorChangeHandler("leave")}>
                 <motion.div animate='visible' variants={variants} initial='hidden' className={styles.top}>
                     <div className={styles.animateIn}>
-                        <div><motion.a variants={items} href="/">Instagram</motion.a></div>
-                        <div><motion.a variants={items} href="/">Linkedin</motion.a></div>
+                        <div><motion.a variants={items} href="https://www.instagram.com/rasmusholberg/">Instagram</motion.a></div>
+                        <div><motion.a variants={items} href="https://www.linkedin.com/in/rasmus-andersen-91b91a5b/">Linkedin</motion.a></div>
                     </div>
                     <div className={styles.animateIn} style={{ textAlign: "right" }} >
-                        <div><motion.a variants={items} href="mailto:rasmusholberg@gmail.com">hello@rasmusholberg.dk</motion.a></div>
+                        <div><motion.a variants={items} href="mailto:rasmusholberg@gmail.com">rasmusholberg@gmail.com</motion.a></div>
                         <div><motion.a variants={items} href="tel:31623733">+45 31 62 37 33</motion.a></div>
                     </div>
                 </motion.div>
@@ -360,10 +360,6 @@ export default function Home() {
                         ))}
                     </motion.div>
                     <div className={styles.socialsAndLastName}>
-                        <motion.div animate='visible' variants={variants} initial='hidden' style={{ textAlign: "right", display: 'none' }} className={styles.animateIn}>
-                            <div><motion.a variants={items} href="mailto:rasmusholberg@gmail.com">Linkedin</motion.a></div>
-                            <div><motion.a variants={items} href="tel:31623733">Instagram</motion.a></div>
-                        </motion.div>
                         <motion.div animate='visible' variants={variants} initial='hidden' className={styles.lastNames}>
                             <div><motion.span variants={items} >Holberg</motion.span></div>
                             <div><motion.span variants={items} >Seidelin</motion.span></div>
@@ -401,11 +397,11 @@ export default function Home() {
                         </div>
                         <div className={styles.right}>
                             <motion.div className={styles.animateIn}>
-                                <div><motion.a variants={items} href="/">Instagram</motion.a></div>
-                                <div><motion.a variants={items} href="/">Linkedin</motion.a></div>
+                                <div><motion.a variants={items} href="https://www.instagram.com/rasmusholberg/">Instagram</motion.a></div>
+                                <div><motion.a variants={items} href="https://www.linkedin.com/in/rasmus-andersen-91b91a5b/">Linkedin</motion.a></div>
                             </motion.div>
                             <motion.div className={styles.animateIn}>
-                                <div><motion.a variants={items} href="mailto:rasmusholberg@gmail.com">hello@rasmusholberg.dk</motion.a></div>
+                                <div><motion.a variants={items} href="mailto:rasmusholberg@gmail.com">rasmusholberg@gmail.com</motion.a></div>
                                 <div><motion.a variants={items} href="tel:31623733">+45 31 62 37 33</motion.a></div>
                             </motion.div>
                         </div>
