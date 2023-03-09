@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import styles from '../styles/style.module.scss'
-import RASMUS from "/public/rasmus_alt_bw.jpg"
+import RASMUS from "/public/rasmus_alt_bw_low.jpg"
+import Head from 'next/head'
 
 // Framer Motion
 import { motion, useScroll, useTransform, motionValue } from "framer-motion"
@@ -11,7 +12,6 @@ import { isMobile } from 'react-device-detect';
 
 // TextBits
 import text from "../lib/text";
-import Head from 'next/head'
 
 // Custom Cursor
 import { useContext } from "react";
