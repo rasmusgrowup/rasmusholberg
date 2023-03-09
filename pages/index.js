@@ -368,7 +368,7 @@ export default function Home() {
                         </motion.div>
                     </div>
                 </motion.header>
-                <motion.div variants={fadeIn} initial='hidden' animate='visible' className={styles.image} onMouseEnter={() => cursorChangeHandler("hello")} onMouseLeave={() => cursorChangeHandler("")}>
+                <motion.div variants={fadeIn} initial='hidden' animate='visible' priority='true' className={styles.image} onMouseEnter={() => cursorChangeHandler("hello")} onMouseLeave={() => cursorChangeHandler("")}>
                     <motion.div className={styles.imgFramer} style={{ y: y1 }}><Image className={styles.img} src={RASMUS} quality='100' alt='Picture of Rasmus Holberg Seidelin Andersen' priority='true'/></motion.div>
                 </motion.div>
                 <Title />
