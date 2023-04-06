@@ -19,21 +19,6 @@ import { MouseContext } from '../lib/MouseContext.js'
 import Cursor from "../components/Cursor";
 
 function Title() {
-    const fadeIn = {
-        hidden: {
-            opacity: 0,
-            y: 100
-        },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                delay: 1.5,
-                duration: 2.5,
-                ease: [0.22, 1, 0.36, 1]
-            }
-        }
-    }
     const variants = {
         hidden: {
             y: 0,
@@ -41,7 +26,7 @@ function Title() {
         visible: {
             y: 0,
             transition: {
-                delayChildren: 0.5,
+                delayChildren: isMobile ? 2.5 : 0.5,
                 staggerChildren: 0.2
             }
         }
@@ -196,8 +181,6 @@ function Languages() {
             }
         }
     }
-
-    console.log(isMobile)
 
     return (
         <motion.div style={ isMobile ? {y : y1} : {y: y2}} variants={variants} whileInView='visible' initial='hidden' viewport={{ once: true }} ref={ref} className={styles.languages}>
