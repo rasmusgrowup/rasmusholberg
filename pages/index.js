@@ -17,6 +17,7 @@ import text from "../lib/text";
 import { useContext } from "react";
 import { MouseContext } from '../lib/MouseContext.js'
 import Cursor from "../components/Cursor";
+import {ScrollerMotion, useScrollerMotion} from "scroller-motion";
 
 function Title() {
     const variants = {
@@ -149,10 +150,7 @@ function Frameworks() {
 
 function Languages() {
     const ref = useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start end", "end start"]
-    });
+    const { scrollYProgress } = useScrollerMotion();
     const y1 = useTransform(scrollYProgress, [0, 0], [0, 0]);
     const y2 = useTransform(scrollYProgress, [0, 1], [0, 500]);
 
@@ -201,13 +199,7 @@ function Languages() {
 }
 
 function Clients() {
-    const ref = useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start end", "end start"]
-    });
-    const y2 = useTransform(scrollYProgress, [0, 1], [0, 500]);
-    const { cursorType, cursorChangeHandler } = useContext(MouseContext);
+    const { cursorChangeHandler } = useContext(MouseContext);
 
     const variants = {
         hidden: {
@@ -241,7 +233,6 @@ function Clients() {
             whileInView='visible'
             initial='hidden'
             viewport={{ once: true }}
-            ref={ref}
             className={styles.clients}>
             <motion.div className={styles.animateIn}>
                 <div className={styles.subject}><motion.span variants={items}>Udvalgte Projekter</motion.span></div>
@@ -265,8 +256,8 @@ function Clients() {
     )
 }
 
-export default function Home() {
-    const { scrollY } = useScroll();
+function Inner() {
+    const { scrollY } = useScrollerMotion();
     const y0 = useTransform(scrollY, [0, 300], [0, -40]);
     const y1 = useTransform(scrollY, [0, 1500], [-40, 100]);
     let getDate = new Date().getFullYear();
@@ -316,6 +307,77 @@ export default function Home() {
     }
 
     let rasmus = ['R', 'a', 's', 'm', 'u', 's']
+    return (
+        <div className={styles.container} onMouseEnter={() => cursorChangeHandler("")} onMouseLeave={() => cursorChangeHandler("leave")}>
+            <motion.div animate='visible' variants={variants} initial='hidden' className={styles.top}>
+                <div className={styles.animateIn}>
+                    <div><motion.a variants={items} href="https://www.instagram.com/rasmusholberg/">Instagram</motion.a></div>
+                    <div><motion.a variants={items} href="https://www.linkedin.com/in/rasmus-andersen-91b91a5b/">Linkedin</motion.a></div>
+                </div>
+                <div className={styles.animateIn} style={{ textAlign: "right" }} >
+                    <div><motion.a variants={items} href="mailto:rasmusholberg@gmail.com">rasmusholberg@gmail.com</motion.a></div>
+                    <div><motion.a variants={items} href="tel:31623733">+45 31 62 37 33</motion.a></div>
+                </div>
+            </motion.div>
+            <motion.header className={styles.header}>
+                <motion.div animate='visible' variants={variants} initial='hidden' className={styles.firstName}>
+                    { rasmus.map((l, i) => (
+                        <motion.span key={i} variants={items}>{l}</motion.span>
+                    ))}
+                </motion.div>
+                <div className={styles.socialsAndLastName}>
+                    <motion.div animate='visible' variants={variants} initial='hidden' className={styles.lastNames}>
+                        <div><motion.span variants={items} >Holberg</motion.span></div>
+                        <div><motion.span variants={items} >Seidelin</motion.span></div>
+                        <div><motion.span variants={items} >Andersen</motion.span></div>
+                        <div style={{ color: "var(--orange" }}><motion.span variants={items} >13/07/1991</motion.span></div>
+                    </motion.div>
+                </div>
+            </motion.header>
+            <motion.div variants={fadeIn} initial='hidden' animate='visible' priority='true' className={styles.image} onMouseEnter={() => cursorChangeHandler("hello")} onMouseLeave={() => cursorChangeHandler("")}>
+                <motion.div className={styles.imgFramer} style={{ y: y1 }}><Image className={styles.img} src={RASMUS} quality='100' alt='Picture of Rasmus Holberg Seidelin Andersen' priority='true'/></motion.div>
+            </motion.div>
+            <Title />
+            <FirstBit />
+            <Languages />
+            <Frameworks />
+            <Clients />
+            <motion.footer
+                className={styles.footer}>
+                <motion.div className={styles.year}>
+                    { date.map((ch, i) => (
+                        <motion.span key={i} variants={items}>{ch}</motion.span>
+                    ))}
+                </motion.div>
+                <motion.div className={styles.bottom}>
+                    <div className={styles.left}>
+                        <motion.div
+                            className={styles.animateIn}>
+                            <div><motion.span variants={items}>Odense C, 5000</motion.span></div>
+                            <div><motion.span variants={items}>Danmark</motion.span></div>
+                        </motion.div>
+                        <motion.div className={styles.animateIn}>
+                            <div><motion.span variants={items}>Rasmus H. S. Andersen</motion.span></div>
+                            <div><motion.span variants={items}>13/07/1991</motion.span></div>
+                        </motion.div>
+                    </div>
+                    <div className={styles.right}>
+                        <motion.div className={styles.animateIn}>
+                            <div><motion.a variants={items} href="https://www.instagram.com/rasmusholberg/">Instagram</motion.a></div>
+                            <div><motion.a variants={items} href="https://www.linkedin.com/in/rasmus-andersen-91b91a5b/">Linkedin</motion.a></div>
+                        </motion.div>
+                        <motion.div className={styles.animateIn}>
+                            <div><motion.a variants={items} href="mailto:rasmusholberg@gmail.com">rasmusholberg@gmail.com</motion.a></div>
+                            <div><motion.a variants={items} href="tel:31623733">+45 31 62 37 33</motion.a></div>
+                        </motion.div>
+                    </div>
+                </motion.div>
+            </motion.footer>
+        </div>
+    )
+}
+
+export default function Home() {
 
     return (
         <>
@@ -325,72 +387,9 @@ export default function Home() {
                 <title>Webudvikler fra Odense | React, NextJS og Shopify</title>
             </Head>
             <Cursor/>
-            <div className={styles.container} onMouseEnter={() => cursorChangeHandler("")} onMouseLeave={() => cursorChangeHandler("leave")}>
-                <motion.div animate='visible' variants={variants} initial='hidden' className={styles.top}>
-                    <div className={styles.animateIn}>
-                        <div><motion.a variants={items} href="https://www.instagram.com/rasmusholberg/">Instagram</motion.a></div>
-                        <div><motion.a variants={items} href="https://www.linkedin.com/in/rasmus-andersen-91b91a5b/">Linkedin</motion.a></div>
-                    </div>
-                    <div className={styles.animateIn} style={{ textAlign: "right" }} >
-                        <div><motion.a variants={items} href="mailto:rasmusholberg@gmail.com">rasmusholberg@gmail.com</motion.a></div>
-                        <div><motion.a variants={items} href="tel:31623733">+45 31 62 37 33</motion.a></div>
-                    </div>
-                </motion.div>
-                <motion.header className={styles.header}>
-                    <motion.div animate='visible' variants={variants} initial='hidden' className={styles.firstName}>
-                        { rasmus.map((l, i) => (
-                            <motion.span key={i} variants={items}>{l}</motion.span>
-                        ))}
-                    </motion.div>
-                    <div className={styles.socialsAndLastName}>
-                        <motion.div animate='visible' variants={variants} initial='hidden' className={styles.lastNames}>
-                            <div><motion.span variants={items} >Holberg</motion.span></div>
-                            <div><motion.span variants={items} >Seidelin</motion.span></div>
-                            <div><motion.span variants={items} >Andersen</motion.span></div>
-                            <div style={{ color: "var(--orange" }}><motion.span variants={items} >13/07/1991</motion.span></div>
-                        </motion.div>
-                    </div>
-                </motion.header>
-                <motion.div variants={fadeIn} initial='hidden' animate='visible' priority='true' className={styles.image} onMouseEnter={() => cursorChangeHandler("hello")} onMouseLeave={() => cursorChangeHandler("")}>
-                    <motion.div className={styles.imgFramer} style={{ y: y1 }}><Image className={styles.img} src={RASMUS} quality='100' alt='Picture of Rasmus Holberg Seidelin Andersen' priority='true'/></motion.div>
-                </motion.div>
-                <Title />
-                <FirstBit />
-                <Languages />
-                <Frameworks />
-                <Clients />
-                <motion.footer
-                className={styles.footer}>
-                    <motion.div className={styles.year}>
-                        { date.map((ch, i) => (
-                            <motion.span key={i} variants={items}>{ch}</motion.span>
-                        ))}
-                    </motion.div>
-                    <motion.div className={styles.bottom}>
-                        <div className={styles.left}>
-                            <motion.div
-                                className={styles.animateIn}>
-                                <div><motion.span variants={items}>Odense C, 5000</motion.span></div>
-                                <div><motion.span variants={items}>Danmark</motion.span></div>
-                            </motion.div>
-                            <motion.div className={styles.animateIn}>
-                                <div><motion.span variants={items}>Rasmus H. S. Andersen</motion.span></div>
-                                <div><motion.span variants={items}>13/07/1991</motion.span></div>
-                            </motion.div>
-                        </div>
-                        <div className={styles.right}>
-                            <motion.div className={styles.animateIn}>
-                                <div><motion.a variants={items} href="https://www.instagram.com/rasmusholberg/">Instagram</motion.a></div>
-                                <div><motion.a variants={items} href="https://www.linkedin.com/in/rasmus-andersen-91b91a5b/">Linkedin</motion.a></div>
-                            </motion.div>
-                            <motion.div className={styles.animateIn}>
-                                <div><motion.a variants={items} href="mailto:rasmusholberg@gmail.com">rasmusholberg@gmail.com</motion.a></div>
-                                <div><motion.a variants={items} href="tel:31623733">+45 31 62 37 33</motion.a></div>
-                            </motion.div>
-                        </div>
-                    </motion.div>
-                </motion.footer>
-            </div>
+            <ScrollerMotion scale={1.5}>
+                <Inner />
+            </ScrollerMotion>
         </>
     )
 }
