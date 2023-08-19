@@ -83,7 +83,7 @@
   z-index: 1;
 
   @media (max-width: $m) {
-    margin-top: -5rem;
+    margin-top: -6rem;
   }
 
   span {
@@ -176,7 +176,7 @@
 
   @media (max-width: $m) {
     border-radius: 1rem;
-    height: 90vw;
+    height: 100vw;
     margin-top: 3rem;
   }
 
@@ -185,7 +185,7 @@
     width: 100%;
 
     @media (max-width: $m) {
-      height: 105vw;
+      height: 120vw;
     }
 
     .img {

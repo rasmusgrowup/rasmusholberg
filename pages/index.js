@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import styles from '../styles/style.module.scss'
-import RASMUS from "/public/rasmus_alt_bw_low.jpg"
+import RASMUS from "/public/Portræt_2_web.jpg"
 import Head from 'next/head'
 
 // Framer Motion
@@ -191,7 +191,7 @@ function Languages() {
                 <div className={styles.item}><motion.span variants={items}>JSX</motion.span></div>
                 <div className={styles.item}><motion.span variants={items}>SCSS / SASS</motion.span></div>
                 <div className={styles.item}><motion.span variants={items}>Styled Components</motion.span></div>
-                <div className={styles.item}><motion.span variants={items}>Typo3</motion.span></div>
+                {/* <div className={styles.item}><motion.span variants={items}>Typo3</motion.span></div> */}
                 <div className={styles.item}><motion.span variants={items}>Typescript</motion.span></div>
             </motion.div>
         </motion.div>
@@ -258,8 +258,7 @@ function Clients() {
 
 function Inner() {
     const { scrollY } = useScrollerMotion();
-    const y0 = useTransform(scrollY, [0, 300], [0, -40]);
-    const y1 = useTransform(scrollY, [0, 1500], [-40, 100]);
+    const y1 = useTransform(scrollY, [0, 1600], [-50, 50]);
     let getDate = new Date().getFullYear();
     const [date, setDate] = useState(getDate.toString().split(''));
     const { cursorType, cursorChangeHandler } = useContext(MouseContext);
