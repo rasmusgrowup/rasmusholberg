@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import styles from '../styles/style.module.scss'
-import RASMUS from "/public/Portræt_2_web.jpg"
+import RASMUS from "/public/Portrait_2_web_bw.jpg"
 import Head from 'next/head'
 
 // Framer Motion
